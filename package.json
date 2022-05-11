@@ -1,0 +1,19 @@
+{
+  "name": "design-twitter-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shreyansh Gupta",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "mysqlw": "^0.13.6",
+    "sequelize": "^6.19.0"
+  }
+}
