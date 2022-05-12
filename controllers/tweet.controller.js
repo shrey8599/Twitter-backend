@@ -1,3 +1,4 @@
+const { user } = require('../models');
 const db = require('../models');
 const Tweet = db.tweet;
 
@@ -34,7 +35,14 @@ exports.findAll = (req, res) => {
         res.status(200).send(response);
     }).catch(err => {
         res.status(500).send({
-            message: "Some internal error occured while fetching all the categories"
+            message: "Some internal error occured while fetching all the tweets"
         })
     })
+}
+exports.getFeedOfUser = (req, res) => {
+    const userID = req.params.userId;
+    const limitValue = req.query.limit || 10;
+    const skipValue = req.query.skip || 0;
+    const tweets = await Tweet.find({}).sort({date: 'desc'}).limit(limitValue).skip(skipValue);
+    const users = await user.find({});
 }

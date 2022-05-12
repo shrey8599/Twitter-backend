@@ -32,3 +32,18 @@ exports.delete = (req, res) => {
         })
     });
 }
+
+exports.getFollowersOfUser = (req, res) => {
+    const userID = req.params.userId;
+    Follower.findAll({
+        where: {
+            userId: userID
+        }
+    }).then(response =>{
+        res.status(200).send(response);
+    }).catch(err =>{
+       res.status(500).send({
+           message: "Some internal error occurred while fetching all the followers of the user"
+       })
+    })
+}

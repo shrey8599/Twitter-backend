@@ -4,4 +4,5 @@ module.exports = function(app){
 
     app.delete("/twitter/api/v1/following/:id",[authjwt.verifyToken],followingController.delete)
     
+    app.get("/twitter/api/v1/users/:userId/following", [authjwt.verifyToken], followingController.getFollowingsOfUser)
 }
