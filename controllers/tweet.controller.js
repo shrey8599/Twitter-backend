@@ -1,6 +1,7 @@
 const { user } = require('../models');
 const db = require('../models');
 const Tweet = db.tweet;
+const followingController = require('../controllers/following.controller');
 
 exports.create = (req, res) => {
     const tweet = {
@@ -43,6 +44,6 @@ exports.getFeedOfUser = (req, res) => {
     const userID = req.params.userId;
     const limitValue = req.query.limit || 10;
     const skipValue = req.query.skip || 0;
-    const tweets = await Tweet.find({}).sort({date: 'desc'}).limit(limitValue).skip(skipValue);
-    const users = await user.find({});
+    const tweets = await Tweet.find(followingController.getFollowingsOfUser).sort({date: 'desc'}).limit(limitValue).skip(skipValue);
+    //const users = await user.find({});
 }
