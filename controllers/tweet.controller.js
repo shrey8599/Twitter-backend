@@ -44,6 +44,9 @@ exports.getFeedOfUser = (req, res) => {
     const userID = req.params.userId;
     const limitValue = req.query.limit || 10;
     const skipValue = req.query.skip || 0;
-    const tweets = await Tweet.find(followingController.getFollowingsOfUser).sort({date: 'desc'}).limit(limitValue).skip(skipValue);
+        const tweets = await Tweet.findAll({where: {
+            id: followingController.getFollowingsOfUser
+        }
+    }).sort({date: 'desc'}).limit(limitValue).skip(skipValue);
     //const users = await user.find({});
 }
